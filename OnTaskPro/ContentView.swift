@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var tasklist = TaskList()
+    
     var body: some View {
-        VStack {
-            BottomBar();
+        
+        TabView {
+            HomeView()
+                .tabItem {
+                    Label("Home", systemImage: "house.fill")
+                }
+
+            TasksView(tasklist: tasklist)
+                .tabItem {
+                    Label("Tasks", systemImage: "checklist")
+                }
+
+            FocusView()
+                .tabItem {
+                    Label("Focus", systemImage: "moon")
+                }
+            
+            SettingsView()
+                .tabItem {
+                    Label("Settings", systemImage: "gearshape")
+                }
         }
-        .padding()
     }
 }
 

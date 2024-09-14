@@ -4,6 +4,8 @@ import SwiftUI
 
 struct BottomBar: View {
     
+    @ObservedObject var tasklist: TaskList
+    
     var body: some View {
 
         TabView {
@@ -16,7 +18,7 @@ struct BottomBar: View {
                     Label("Focus", systemImage: "moon")
                 }
 
-            TasksView()
+            TasksView(tasklist: tasklist)
                 .tabItem {
                     Label("Tasks", systemImage: "checklist")
                 }
@@ -30,7 +32,7 @@ struct BottomBar: View {
 }
 
 #Preview {
-    BottomBar()
+    BottomBar(tasklist: TaskList())
 }
 
 
