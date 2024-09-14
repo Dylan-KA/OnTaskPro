@@ -10,9 +10,9 @@ import SwiftUI
 struct TasksView: View {
     
     @ObservedObject var tasklist: TaskList
-    @State private var searchText: String = "" // State to store the search query
-    @State private var isShowingAddTaskView = false // Controls whether the sheet is shown
-    @State private var sortOption: SortOption = .dueDate // Default sorting option
+    @State private var searchText: String = ""
+    @State private var isShowingAddTaskView = false
+    @State private var sortOption: SortOption = .dueDate
         
     enum SortOption: String, CaseIterable, Identifiable {
         case dueDate = "Due Date"

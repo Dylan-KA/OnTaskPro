@@ -28,11 +28,6 @@ struct ContentView: View {
                 .tabItem {
                     Label("Focus", systemImage: "moon")
                 }
-            
-            SettingsView()
-                .tabItem {
-                    Label("Settings", systemImage: "gearshape")
-                }
         }
     }
 }
