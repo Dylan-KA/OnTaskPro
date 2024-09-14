@@ -24,7 +24,7 @@ struct ContentView: View {
                     Label("Tasks", systemImage: "checklist")
                 }
 
-            FocusView()
+            FocusView(tasklist: tasklist)
                 .tabItem {
                     Label("Focus", systemImage: "moon")
                 }

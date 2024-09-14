@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TaskRowView: View {
     
-    var taskList: TaskList
     @Binding var task: Task
     
     var body: some View {

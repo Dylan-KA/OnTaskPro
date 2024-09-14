@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Task: Identifiable {
+struct Task: Identifiable, Hashable {
     var id: UUID
     var taskName: String
     var dueDate: Date

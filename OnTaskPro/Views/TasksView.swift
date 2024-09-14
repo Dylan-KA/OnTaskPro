@@ -84,7 +84,7 @@ struct TasksView: View {
                 List {
                     ForEach(filteredAndSortedTasks) { task in
                         if let index = tasklist.List.firstIndex(where: { $0.id == task.id }) {
-                            TaskRowView(taskList: tasklist, task: $tasklist.List[index])
+                            TaskRowView(task: $tasklist.List[index])
                         }
                     }
                 }

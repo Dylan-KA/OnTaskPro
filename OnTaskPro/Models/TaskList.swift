@@ -25,8 +25,10 @@ class TaskList : ObservableObject {
         List.append(NewTask)
     }
     
-    func removeTask(Task :Task) {
-        
+    func removeTask(task: Task) {
+        if let index = List.firstIndex(where: { $0.id == task.id }) {
+            List.remove(at: index)
+        }
     }
     
     
