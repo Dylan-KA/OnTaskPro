@@ -74,7 +74,6 @@
 				6B76F10C2C86D16500BDC77D /* OnTaskProApp.swift */,
 				6B76F10E2C86D16500BDC77D /* ContentView.swift */,
 				6B76F11C2C86DB4C00BDC77D /* Views */,
-				6B76F11D2C86DB7C00BDC77D /* ViewModels */,
 				6B76F11E2C86DB9D00BDC77D /* Models */,
 				6B76F1102C86D16600BDC77D /* Assets.xcassets */,
 				6B76F1122C86D16600BDC77D /* Preview Content */,
@@ -103,13 +102,6 @@
 				6B1011092C95C42C0073D815 /* CompletionPopupView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		6B76F11D2C86DB7C00BDC77D /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		6B76F11E2C86DB9D00BDC77D /* Models */ = {
