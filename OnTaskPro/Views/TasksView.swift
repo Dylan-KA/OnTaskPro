@@ -9,7 +9,9 @@ import SwiftUI
 
 struct TasksView: View {
     
+    @EnvironmentObject var tabSelectionManager: TabSelectionManager
     @ObservedObject var tasklist: TaskList
+    @Binding var selectedTask: Task?
     @State private var searchText: String = ""
     @State private var isShowingAddTaskView = false
     @State private var sortOption: SortOption = .dueDate
@@ -84,11 +86,15 @@ struct TasksView: View {
                 List {
                     ForEach(filteredAndSortedTasks) { task in
                         if let index = tasklist.List.firstIndex(where: { $0.id == task.id }) {
-                            TaskRowView(task: $tasklist.List[index])
+                            TaskRowView(task: tasklist.List[index])
+                                .onTapGesture {
+                                    selectedTask = task
+                                    tabSelectionManager.selectedTab = 2
+                                }
                         }
                     }
                 }
-                .scrollContentBackground(.hidden) // Ensure list background is transparent
+                .scrollContentBackground(.hidden)
             }
         }
         // Present the AddTaskView as a sheet
@@ -120,5 +126,5 @@ struct TasksView: View {
 }
 
 #Preview {
-    TasksView(tasklist: TaskList())
+    ContentView()
 }

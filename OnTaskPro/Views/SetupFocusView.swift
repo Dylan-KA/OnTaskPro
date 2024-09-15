@@ -51,7 +51,7 @@ struct SetupFocusView: View {
             .cornerRadius(10)
             .padding(.bottom, 20)
             
-            // Timer Picker
+            // Timer Duration Picker
             Text("Select Focus Duration")
                 .font(.headline)
             Picker("Select Timer", selection: $selectedDuration) {

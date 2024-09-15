@@ -10,7 +10,7 @@ import SwiftUI
 struct FocusView: View {
     
     @ObservedObject var tasklist: TaskList
-    @State private var selectedTask: Task? = nil
+    @Binding var selectedTask: Task?
     @State private var selectedDuration: Int = 15
     @State private var remainingTime: Int = 0
     @State private var isTimerRunning = false
@@ -52,11 +52,26 @@ struct FocusView: View {
                     
                     Spacer()
                     
+                    // Button to finish early
+                    Button(action: {
+                        remainingTime = 0
+                    }) {
+                        Text("I'm Finished early")
+                            .foregroundColor(.white)
+                            .padding()
+                            .font(.system(size: 24))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                            .background(Color.green)
+                            .cornerRadius(12)
+                    }
+                    .padding(.horizontal)
+                    
                     // Button to stop the timer
                     Button(action: {
-                        stopTimer()
+                        TaskCancelled()
                     }) {
-                        Text("Stop Focus Session")
+                        Text("Cancel Focus Session")
                             .foregroundColor(.white)
                             .padding()
                             .font(.system(size: 24))
@@ -84,14 +99,12 @@ struct FocusView: View {
                     }
                     .padding(.horizontal)
                 }
-                
             } else {
                 
                 Spacer()
                 Text("No task selected")
                     .font(.title2)
                     .padding(.bottom, 10)
-                
                 Spacer()
                 
                 // Button to open SetupFocusView
@@ -151,15 +164,15 @@ struct FocusView: View {
                 if remainingTime > 0 {
                     remainingTime -= 1
                 } else {
-                    stopTimer() // Stop timer when countdown is complete
+                    TaskFinished()
                     isShowingCompletionPopup = true
                 }
             }
         }
     }
     
-    // Stop the countdown timer and reset the view
-    func stopTimer() {
+    // Stop Countdown Early
+    func TaskFinished() {
         timer?.invalidate()
         timer = nil
         isTimerRunning = false
@@ -167,9 +180,17 @@ struct FocusView: View {
         tasklist.removeTask(task: selectedTask!)
         selectedTask = nil
     }
+    
+    // Stop Focus Session
+    func TaskCancelled() {
+        timer?.invalidate()
+        timer = nil
+        isTimerRunning = false
+        remainingTime = 0
+    }
 
 }
 
 #Preview {
-    FocusView(tasklist: TaskList())
+    ContentView()
 }

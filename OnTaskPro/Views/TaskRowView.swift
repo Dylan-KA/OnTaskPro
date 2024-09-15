@@ -9,17 +9,17 @@ import SwiftUI
 
 struct TaskRowView: View {
     
-    @Binding var task: Task
+    var task: Task
     
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 Text(task.taskName)
                     .font(.headline)
-                    .foregroundColor(.black) // Set task name color
+                    .foregroundColor(.black)
                 Text("Due: \(formattedDate(task.dueDate))")
                     .font(.subheadline)
-                    .foregroundColor(determineColor(for: task.dueDate)) // Keep due date in gray
+                    .foregroundColor(determineColor(for: task.dueDate))
             }
             Spacer()
             Image(systemName: "chevron.right")
@@ -48,7 +48,6 @@ struct TaskRowView: View {
     }
 }
 
- #Preview {
-     TasksView(tasklist: TaskList())
- }
-
+#Preview {
+    ContentView()
+}
